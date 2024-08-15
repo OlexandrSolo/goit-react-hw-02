@@ -22,7 +22,9 @@ function App() {
 
   const messages = 'No feedback yet';
 
-  const totalSize = Object.values(count).reduce(
+  const values = Object.values(count);
+
+  const totalSize = values.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
