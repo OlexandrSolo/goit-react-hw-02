@@ -1,26 +1,24 @@
 import style from './Feedback.module.css';
 
-export default function Feedback({
-  userFeedBack: { good, neutral, bad },
-  total,
-}) {
+export default function Feedback({ userFeedBack, total }) {
+  const positivePercent = total > 0 ? (userFeedBack.good / total) * 100 : 0;
   return (
     <div>
       <ul>
         <li>
-          <p>Good: {good}</p>
+          <p>Good: {userFeedBack.good}</p>
         </li>
         <li>
-          <p>Neutral: {neutral}</p>
+          <p>Neutral: {userFeedBack.neutral}</p>
         </li>
         <li>
-          <p>Bad: {bad}</p>
+          <p>Bad: {userFeedBack.bad}</p>
         </li>
         <li>
           <p>Total: {total}</p>
         </li>
         <li>
-          <p>Positive: </p>
+          <p>Positive: {positivePercent.toFixed()}%</p>
         </li>
       </ul>
     </div>
