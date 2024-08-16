@@ -8,7 +8,7 @@ import Notification from './components/Notification/Notification';
 
 const getInitialReview = () => {
   const checkStorage = localStorage.getItem('user-review');
-  return checkStorage !== 0
+  return checkStorage
     ? JSON.parse(checkStorage)
     : { good: 0, neutral: 0, bad: 0 };
 };
