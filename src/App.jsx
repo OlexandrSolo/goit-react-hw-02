@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './App.module.css';
+import css from './App.module.css';
 
 import Description from './components/Description/Description';
 import Options from './components/Options/Options';
@@ -35,7 +35,7 @@ function App() {
     });
   };
   return (
-    <>
+    <div className={css.container}>
       <Description />
       <Options
         options={count}
@@ -47,7 +47,7 @@ function App() {
       ) : (
         <Notification textWarning={messages} />
       )}
-    </>
+    </div>
   );
 }
 

@@ -10,7 +10,7 @@ export default function Options({ options, updateFeedback, total }) {
 
   return (
     <div>
-      <ul>
+      <ul className={style.optionsList}>
         <li>
           <button onClick={() => userOutput('good')}>Good</button>
         </li>
