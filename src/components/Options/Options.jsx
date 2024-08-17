@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import style from './Options.module.css';
 
 export default function Options({ options, updateFeedback, total }) {
@@ -39,3 +40,9 @@ export default function Options({ options, updateFeedback, total }) {
     </div>
   );
 }
+
+Options.propTypes = {
+  options: PropTypes.object.isRequired,
+  updateFeedback: PropTypes.func.isRequired,
+  total: PropTypes.number,
+};

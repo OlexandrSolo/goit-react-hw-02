@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import style from './Feedback.module.css';
 
 export default function Feedback({ userFeedBack, total }) {
@@ -24,3 +25,8 @@ export default function Feedback({ userFeedBack, total }) {
     </div>
   );
 }
+
+Feedback.PropTypes = {
+  userFeedBack: PropTypes.object.isRequired,
+  total: PropTypes.number.isRequired,
+};

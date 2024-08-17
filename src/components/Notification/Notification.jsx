@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import css from './Notification.module.css';
 
 export default function Notification({ textWarning }) {
@@ -7,3 +8,7 @@ export default function Notification({ textWarning }) {
     </div>
   );
 }
+
+Notification.propTypes = {
+  textWarning: PropTypes.string,
+};
