@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import style from './Feedback.module.css';
 
-export default function Feedback({ userFeedBack, total }) {
-  const positivePercent = total > 0 ? (userFeedBack.good / total) * 100 : 0;
+export default function Feedback({ userFeedBack, results, total }) {
   return (
-    <div>
+    <>
       <ul>
         <li>
           <p>Good: {userFeedBack.good}</p>
@@ -19,14 +18,15 @@ export default function Feedback({ userFeedBack, total }) {
           <p>Total: {total}</p>
         </li>
         <li>
-          <p>Positive: {positivePercent.toFixed()}%</p>
+          <p>Positive: {results}%</p>
         </li>
       </ul>
-    </div>
+    </>
   );
 }
 
-Feedback.PropTypes = {
+Feedback.propTypes = {
   userFeedBack: PropTypes.object.isRequired,
-  total: PropTypes.number.isRequired,
+  results: PropTypes.number,
+  total: PropTypes.number,
 };

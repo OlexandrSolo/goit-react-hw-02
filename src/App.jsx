@@ -20,30 +20,47 @@ function App() {
     localStorage.setItem('user-review', JSON.stringify(count));
   }, [count]);
 
+  const updateFeedback = feedbackType => {
+    setCount({
+      ...count,
+      [feedbackType]: Number(count[feedbackType]) + 1,
+    });
+  };
+
   const messages = 'No feedback yet';
 
   const values = Object.values(count);
-
   const totalSize = values.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
+  const positivePercent =
+    totalSize > 0 ? Math.round((count.good / totalSize) * 100) : 0;
 
-  const updateFeedback = feedbackType => {
-    setCount({
-      ...feedbackType,
-    });
-  };
   return (
     <div className={css.container}>
       <Description />
+
+      <Options refreshFeedback={updateFeedback} type={'good'} name={'Good'} />
       <Options
-        options={count}
-        updateFeedback={updateFeedback}
-        total={totalSize}
+        refreshFeedback={updateFeedback}
+        type={'neutral'}
+        name={'Neutral'}
       />
+      <Options refreshFeedback={updateFeedback} type={'bad'} name={'Bad'} />
+
+      {totalSize > 0 && (
+        <button onClick={() => setCount({ good: 0, neutral: 0, bad: 0 })}>
+          Reset
+        </button>
+      )}
+
       {totalSize !== 0 ? (
-        <Feedback userFeedBack={count} total={totalSize} />
+        <Feedback
+          userFeedBack={count}
+          total={totalSize}
+          results={positivePercent}
+        />
       ) : (
         <Notification textWarning={messages} />
       )}
