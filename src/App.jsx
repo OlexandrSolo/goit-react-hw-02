@@ -23,7 +23,7 @@ function App() {
   const updateFeedback = feedbackType => {
     setCount({
       ...count,
-      [feedbackType]: Number(count[feedbackType]) + 1,
+      [feedbackType]: count[feedbackType] + 1,
     });
   };
 
@@ -41,20 +41,11 @@ function App() {
     <div className={css.container}>
       <Description />
 
-      <Options refreshFeedback={updateFeedback} type={'good'} name={'Good'} />
       <Options
-        refreshFeedback={updateFeedback}
-        type={'neutral'}
-        name={'Neutral'}
+        updateFeedback={updateFeedback}
+        defaultOption={setCount}
+        allFeedback={totalSize}
       />
-      <Options refreshFeedback={updateFeedback} type={'bad'} name={'Bad'} />
-
-      {totalSize > 0 && (
-        <button onClick={() => setCount({ good: 0, neutral: 0, bad: 0 })}>
-          Reset
-        </button>
-      )}
-
       {totalSize !== 0 ? (
         <Feedback
           userFeedBack={count}
