@@ -26,8 +26,8 @@ export default function Options({ updateFeedback, setCount, allFeedback }) {
   );
 }
 
-// Options.propTypes = {
-//   type: PropTypes.string.isRequired,
-//   refreshFeedback: PropTypes.func.isRequired,
-//   name: PropTypes.string.isRequired,
-// };
+Options.propTypes = {
+  updateFeedback: PropTypes.func.isRequired,
+  setCount: PropTypes.func.isRequired,
+  allFeedback: PropTypes.number.isRequired,
+};

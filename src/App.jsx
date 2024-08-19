@@ -43,7 +43,7 @@ function App() {
 
       <Options
         updateFeedback={updateFeedback}
-        defaultOption={setCount}
+        setCount={setCount}
         allFeedback={totalSize}
       />
       {totalSize !== 0 ? (
